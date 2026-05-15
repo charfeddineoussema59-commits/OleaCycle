@@ -5,15 +5,6 @@ import { useCartStore } from '../store/cartStore';
 
 const MOCK_PRODUCTS = [
   {
-    id: 4,
-    name: "Honey Jar (1kg)",
-    category: "Food Packaging",
-    price: 7.80,
-    minOrder: "150 units (B2B)",
-    description: "Perfectly sealed high-capacity jar designed specifically for honey and preserves. Keeps contents fresh while looking stunning on the shelf.",
-    image: "/honey_jar_1kg.jpg"
-  },
-  {
     id: 7,
     name: "Honey Jar (500g)",
     category: "Food Packaging",
@@ -32,13 +23,22 @@ const MOCK_PRODUCTS = [
     image: "/oil_bottle_500ml.jpg"
   },
   {
-    id: 6,
-    name: "Oil Bottle (1L)",
+    id: 8,
+    name: "Honey Jar (250g)",
     category: "Food Packaging",
-    price: 7.90,
-    minOrder: "100 units (B2B)",
-    description: "Large capacity oil bottle, sustainably crafted to match the purity of the liquids it holds.",
-    image: "/oil_bottle_1l.jpg"
+    price: 4.50,
+    minOrder: "200 units (B2B)",
+    description: "Compact and elegant jar ideal for artisan honey, sample sizes, and gift sets. Fully compostable with a premium finish.",
+    image: "/honey_jar_250g.jpg"
+  },
+  {
+    id: 9,
+    name: "Oil Bottle (250ml)",
+    category: "Food Packaging",
+    price: 4.80,
+    minOrder: "150 units (B2B)",
+    description: "Sleek small-format bottle perfect for premium olive oils, infused oils, and tasting portions. UV-resistant and 100% compostable.",
+    image: "/oil_bottle_250ml.jpg"
   }
 ];
 
