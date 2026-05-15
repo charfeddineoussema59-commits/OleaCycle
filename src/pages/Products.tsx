@@ -8,7 +8,7 @@ const MOCK_PRODUCTS = [
     id: 7,
     name: "Honey Jar (500g)",
     category: "Food Packaging",
-    price: 6.10,
+    price: 7.70,
     minOrder: "150 units (B2B)",
     description: "Our larger capacity sealed jar, perfect for bulk honey and gourmet preserves.",
     image: "/honey_jar_500g.jpg"
@@ -17,7 +17,7 @@ const MOCK_PRODUCTS = [
     id: 5,
     name: "Oil Bottle (500ml)",
     category: "Food Packaging",
-    price: 6.20,
+    price: 7.90,
     minOrder: "100 units (B2B)",
     description: "Premium compostable bottle that perfectly shields high-quality oils from UV light degradation.",
     image: "/oil_bottle_500ml.jpg"
@@ -26,7 +26,7 @@ const MOCK_PRODUCTS = [
     id: 8,
     name: "Honey Jar (250g)",
     category: "Food Packaging",
-    price: 4.50,
+    price: 5.70,
     minOrder: "200 units (B2B)",
     description: "Compact and elegant jar ideal for artisan honey, sample sizes, and gift sets. Fully compostable with a premium finish.",
     image: "/honey_jar_250g.jpg"
@@ -35,7 +35,7 @@ const MOCK_PRODUCTS = [
     id: 9,
     name: "Oil Bottle (250ml)",
     category: "Food Packaging",
-    price: 4.80,
+    price: 5.90,
     minOrder: "150 units (B2B)",
     description: "Sleek small-format bottle perfect for premium olive oils, infused oils, and tasting portions. UV-resistant and 100% compostable.",
     image: "/oil_bottle_250ml.jpg"
