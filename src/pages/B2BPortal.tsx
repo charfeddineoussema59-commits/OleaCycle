@@ -19,6 +19,7 @@ export const B2BPortalPage = () => {
   const [formData, setFormData] = useState({
     companyName: '',
     email: '',
+    phone: '',
     volume: '',
     details: ''
   });
@@ -38,6 +39,7 @@ export const B2BPortalPage = () => {
           New B2B Quote Request from ${formData.companyName}
           
           Contact Email: ${formData.email}
+          Phone Number: ${formData.phone}
           Volume: ${formData.volume}
           
           Details:
@@ -60,6 +62,7 @@ export const B2BPortalPage = () => {
           {
             company_name: formData.companyName,
             contact_email: formData.email,
+            phone_number: formData.phone,
             estimated_volume: formData.volume,
             requirements_details: formData.details
           }
@@ -71,7 +74,7 @@ export const B2BPortalPage = () => {
       }
 
       setIsSuccess(true);
-      setFormData({ companyName: '', email: '', volume: '', details: '' });
+      setFormData({ companyName: '', email: '', phone: '', volume: '', details: '' });
     } catch (err: any) {
       console.error("Quote submission error:", err);
       setErrorMsg('There was an error submitting your request. Please try again or contact us directly at oleacycle1@gmail.com.');
@@ -173,16 +176,28 @@ export const B2BPortalPage = () => {
                   />
                 </div>
               </div>
-              <div>
-                <label className="block text-sm font-medium text-charcoal mb-2">Volume *</label>
-                <input 
-                  required
-                  type="text" 
-                  value={formData.volume}
-                  onChange={(e) => setFormData({...formData, volume: e.target.value})}
-                  className="w-full px-4 py-3 bg-cream rounded-xl focus:outline-none focus:ring-2 focus:ring-olive border border-transparent" 
-                  placeholder="e.g. 5,000 units or weekly batches" 
-                />
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <label className="block text-sm font-medium text-charcoal mb-2">Phone Number</label>
+                  <input 
+                    type="tel" 
+                    value={formData.phone}
+                    onChange={(e) => setFormData({...formData, phone: e.target.value})}
+                    className="w-full px-4 py-3 bg-cream rounded-xl focus:outline-none focus:ring-2 focus:ring-olive border border-transparent" 
+                    placeholder="+216 20 000 000" 
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-charcoal mb-2">Volume *</label>
+                  <input 
+                    required
+                    type="text" 
+                    value={formData.volume}
+                    onChange={(e) => setFormData({...formData, volume: e.target.value})}
+                    className="w-full px-4 py-3 bg-cream rounded-xl focus:outline-none focus:ring-2 focus:ring-olive border border-transparent" 
+                    placeholder="e.g. 5,000 units or weekly batches" 
+                  />
+                </div>
               </div>
               <div>
                 <label className="block text-sm font-medium text-charcoal mb-2">Project Details & Requirements</label>
