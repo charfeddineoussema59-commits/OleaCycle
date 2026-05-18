@@ -1,18 +1,15 @@
 import { Link } from 'react-router-dom';
 import { ArrowRight, Leaf, ShieldCheck, Factory, CheckCircle2 } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { FadeIn3D } from '../components/animations/FadeIn3D';
+import { TiltCard } from '../components/animations/TiltCard';
+import { Float4D } from '../components/animations/Float4D';
 
 export const HomePage = () => (
   <div>
     {/* Hero Section */}
     <section className="relative min-h-[90vh] flex items-center overflow-hidden bg-cream pt-10 pb-20">
       <div className="container mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-        <motion.div 
-          initial={{ opacity: 0, x: -30 }} 
-          animate={{ opacity: 1, x: 0 }} 
-          transition={{ duration: 0.8 }}
-          className="z-10 relative"
-        >
+        <FadeIn3D className="z-10 relative">
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-olive/10 rounded-full text-olive font-medium text-sm mb-6">
             <span className="w-2 h-2 rounded-full bg-terracotta animate-pulse"></span>
             100% Home Compostable
@@ -48,14 +45,10 @@ export const HomePage = () => (
               <div className="text-sm font-medium">Local Production</div>
             </div>
           </div>
-        </motion.div>
+        </FadeIn3D>
         
-        <motion.div 
-          initial={{ opacity: 0, scale: 0.9 }} 
-          animate={{ opacity: 1, scale: 1 }} 
-          transition={{ duration: 1, delay: 0.2 }}
-          className="relative h-[600px] flex items-center justify-center"
-        >
+        <div className="relative h-[600px] flex items-center justify-center">
+           <TiltCard zTranslate="50px">
            {/* Decorative elements behind the image */}
            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-olive/5 rounded-full blur-3xl"></div>
            <div className="absolute top-[40%] left-[60%] -translate-x-1/2 -translate-y-1/2 w-[60%] h-[60%] bg-terracotta/5 rounded-full blur-3xl"></div>
@@ -67,11 +60,12 @@ export const HomePage = () => (
            />
            
            {/* Floating Badge */}
-           <motion.div 
-              animate={{ y: [0, -10, 0] }} 
-              transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }}
+           <Float4D 
+              yOffset={-12}
+              duration={3.5}
               className="absolute top-10 right-10 z-20 glass-panel px-6 py-4 rounded-xl flex items-center gap-4"
            >
+             <div style={{ transform: "translateZ(60px)" }} className="flex items-center gap-4">
              <div className="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center">
                <CheckCircle2 className="w-6 h-6 text-green-600" />
              </div>
@@ -79,8 +73,10 @@ export const HomePage = () => (
                <div className="text-xs text-charcoal/60 uppercase font-bold tracking-wider">Zero Waste</div>
                <div className="font-serif text-lg text-olive-dark">Material</div>
              </div>
-           </motion.div>
-        </motion.div>
+             </div>
+           </Float4D>
+           </TiltCard>
+        </div>
       </div>
     </section>
 
@@ -88,27 +84,17 @@ export const HomePage = () => (
     <section className="py-24 bg-white relative">
       <div className="container mx-auto px-4">
         <div className="flex flex-col lg:flex-row items-center gap-16">
-          <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="w-full lg:w-1/2 relative"
-          >
-            <div className="absolute -inset-4 bg-terracotta/5 rounded-3xl transform -rotate-3"></div>
-            <img 
-              src="/raw_material.jpg" 
-              alt="OleaCycle Raw Olive Pomace Material" 
-              className="relative z-10 w-full h-[500px] object-cover rounded-2xl shadow-xl border border-cream-dark"
-            />
-          </motion.div>
-          <motion.div 
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="w-full lg:w-1/2"
-          >
+          <div className="w-full lg:w-1/2 relative h-[500px]">
+            <TiltCard zTranslate="30px">
+              <div className="absolute -inset-4 bg-terracotta/5 rounded-3xl transform -rotate-3"></div>
+              <img 
+                src="/raw_material.jpg" 
+                alt="OleaCycle Raw Olive Pomace Material" 
+                className="relative z-10 w-full h-[500px] object-cover rounded-2xl shadow-xl border border-cream-dark"
+              />
+            </TiltCard>
+          </div>
+          <FadeIn3D delay={0.2} className="w-full lg:w-1/2">
             <h2 className="text-sm font-bold tracking-widest uppercase text-terracotta mb-4">The Material</h2>
             <h3 className="text-4xl md:text-5xl font-serif text-olive-dark mb-6">Born from the Earth. <br/>Returning to it.</h3>
             <p className="text-lg text-charcoal-light leading-relaxed mb-8">
@@ -130,7 +116,7 @@ export const HomePage = () => (
               Discover the Collection
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </Link>
-          </motion.div>
+          </FadeIn3D>
         </div>
       </div>
     </section>
@@ -138,10 +124,12 @@ export const HomePage = () => (
     {/* Vision Section */}
     <section className="py-24 bg-olive-dark text-cream selection:bg-terracotta selection:text-white">
       <div className="container mx-auto px-4 text-center max-w-4xl">
-        <h2 className="text-4xl md:text-5xl font-serif mb-8 text-cream">Beyond Plastic Alternatives</h2>
-        <p className="text-xl md:text-2xl leading-relaxed text-cream/80 font-light">
-          We don't just replace plastic; we reinvent what packaging can be. By utilizing the millions of tons of olive pomace discarded annually across the Mediterranean, OleaCycle creates containers that return seamlessly to the earth.
-        </p>
+        <FadeIn3D yOffset={60}>
+          <h2 className="text-4xl md:text-5xl font-serif mb-8 text-cream">Beyond Plastic Alternatives</h2>
+          <p className="text-xl md:text-2xl leading-relaxed text-cream/80 font-light">
+            We don't just replace plastic; we reinvent what packaging can be. By utilizing the millions of tons of olive pomace discarded annually across the Mediterranean, OleaCycle creates containers that return seamlessly to the earth.
+          </p>
+        </FadeIn3D>
       </div>
     </section>
   </div>

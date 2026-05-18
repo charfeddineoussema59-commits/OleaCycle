@@ -1,4 +1,6 @@
-import { motion } from 'framer-motion';
+import { FadeIn3D } from '../components/animations/FadeIn3D';
+import { TiltCard } from '../components/animations/TiltCard';
+import { Float4D } from '../components/animations/Float4D';
 import { ShoppingBag, ArrowRight, Palette, PenTool, Shapes } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useCartStore } from '../store/cartStore';
@@ -49,10 +51,12 @@ export const ProductsPage = () => {
     <div className="min-h-screen bg-cream">
       {/* Header */}
       <section className="bg-olive-dark text-white py-24 px-4 text-center">
-        <h1 className="text-5xl md:text-6xl font-serif mb-6">The Collection</h1>
-        <p className="text-xl max-w-2xl mx-auto text-cream/80">
-          Discover our range of premium, compostable containers. Designed for both individual consumers and wholesale B2B partners.
-        </p>
+        <FadeIn3D yOffset={30}>
+          <h1 className="text-5xl md:text-6xl font-serif mb-6">The Collection</h1>
+          <p className="text-xl max-w-2xl mx-auto text-cream/80">
+            Discover our range of premium, compostable containers. Designed for both individual consumers and wholesale B2B partners.
+          </p>
+        </FadeIn3D>
       </section>
 
       {/* Filters & Grid */}
@@ -67,23 +71,21 @@ export const ProductsPage = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
           {MOCK_PRODUCTS.map((product, idx) => (
-            <motion.div
+            <FadeIn3D
               key={product.id}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: idx * 0.1 }}
+              delay={idx * 0.1}
               className="group cursor-pointer"
             >
-              <div className="relative aspect-square overflow-hidden rounded-2xl mb-6 bg-white shadow-soft">
+              <TiltCard zTranslate="30px" className="relative aspect-square overflow-hidden rounded-2xl mb-6 bg-white shadow-soft z-10">
                 <img
                   src={product.image}
                   alt={product.name}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                  className="w-full h-full object-cover"
                 />
-                <div className="absolute top-4 left-4 bg-terracotta text-white text-xs font-bold px-3 py-1 rounded-full">
+                <div style={{ transform: "translateZ(40px)" }} className="absolute top-4 left-4 bg-terracotta text-white text-xs font-bold px-3 py-1 rounded-full">
                   {product.category}
                 </div>
-              </div>
+              </TiltCard>
               <div className="flex justify-between items-start mb-1">
                 <h3 className="text-xl font-serif font-bold text-olive-dark group-hover:text-terracotta transition-colors">
                   {product.name}
@@ -101,7 +103,7 @@ export const ProductsPage = () => {
               >
                 <ShoppingBag className="w-4 h-4" /> Add to Cart
               </button>
-            </motion.div>
+            </FadeIn3D>
           ))}
         </div>
       </section>
@@ -110,7 +112,7 @@ export const ProductsPage = () => {
       <section className="py-24 bg-white overflow-hidden">
         <div className="container mx-auto px-4">
           <div className="flex flex-col lg:flex-row items-center gap-16">
-            <div className="w-full lg:w-1/2">
+            <FadeIn3D className="w-full lg:w-1/2">
               <div className="inline-flex items-center gap-2 px-3 py-1 bg-terracotta/10 rounded-full text-terracotta font-bold text-xs mb-4 uppercase tracking-wider">
                 Volume Exclusive
               </div>
@@ -158,33 +160,32 @@ export const ProductsPage = () => {
                   Inquire for Volume Orders <ArrowRight className="w-5 h-5" />
                 </Link>
               </div>
-            </div>
+            </FadeIn3D>
 
-            <motion.div 
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 1 }}
-              className="w-full lg:w-1/2 relative"
-            >
+            <div className="w-full lg:w-1/2 relative">
               <div className="absolute -inset-4 bg-terracotta/5 rounded-[2rem] transform rotate-2"></div>
-              <img 
-                src="/bespoke_personalization.jpg" 
-                alt="Bespoke OleaCycle Laser Engraved Bottle" 
-                className="relative z-10 w-full rounded-2xl shadow-2xl border border-cream-dark"
-              />
-              
-              <div className="absolute -bottom-6 -left-6 z-20 glass-panel p-6 rounded-2xl shadow-xl max-w-xs hidden md:block">
-                <p className="text-olive-dark italic font-serif text-lg">"The engraving detail is unparalleled. It feels unified with the Earth."</p>
-                <div className="mt-4 flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-full bg-olive/20"></div>
-                  <div className="text-xs">
-                    <div className="font-bold">Organic Essence Lab</div>
-                    <div className="text-charcoal/60">B2B Partner</div>
+              <TiltCard zTranslate="40px">
+                <img 
+                  src="/bespoke_personalization.jpg" 
+                  alt="Bespoke OleaCycle Laser Engraved Bottle" 
+                  className="relative z-10 w-full rounded-2xl shadow-2xl border border-cream-dark"
+                />
+                
+                <Float4D 
+                  yOffset={-10}
+                  className="absolute -bottom-6 -left-6 z-20 glass-panel p-6 rounded-2xl shadow-xl max-w-xs hidden md:block"
+                >
+                  <p className="text-olive-dark italic font-serif text-lg">"The engraving detail is unparalleled. It feels unified with the Earth."</p>
+                  <div className="mt-4 flex items-center gap-3">
+                    <div className="w-8 h-8 rounded-full bg-olive/20"></div>
+                    <div className="text-xs">
+                      <div className="font-bold">Organic Essence Lab</div>
+                      <div className="text-charcoal/60">B2B Partner</div>
+                    </div>
                   </div>
-                </div>
-              </div>
-            </motion.div>
+                </Float4D>
+              </TiltCard>
+            </div>
           </div>
         </div>
       </section>

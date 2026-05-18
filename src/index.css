@@ -11,6 +11,12 @@
     @apply font-serif text-olive-dark;
   }
   
+  img {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+    filter: contrast(1.02) saturate(1.05) brightness(1.01);
+  }
+  
   /* Custom scrollbar for webkit */
   ::-webkit-scrollbar {
     width: 8px;

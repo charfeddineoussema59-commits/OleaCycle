@@ -2,6 +2,9 @@ import { useState } from 'react';
 import { ArrowRight, Box, Handshake, Sprout, Send, CheckCircle } from 'lucide-react';
 import { supabase } from '../lib/supabase';
 import emailjs from '@emailjs/browser';
+import { FadeIn3D } from '../components/animations/FadeIn3D';
+import { TiltCard } from '../components/animations/TiltCard';
+import { Float4D } from '../components/animations/Float4D';
 
 // EmailJS Configuration
 const EMAILJS_SERVICE_ID  = import.meta.env.VITE_EMAILJS_SERVICE_ID  || 'service_51ihzdn';
@@ -80,40 +83,49 @@ export const B2BPortalPage = () => {
   return (
     <div className="bg-cream min-h-screen">
       <div className="bg-olive py-20 text-center text-white">
-        <h1 className="text-5xl md:text-6xl font-serif mb-6">B2B Wholesale Portal</h1>
-        <p className="text-xl max-w-2xl mx-auto text-white/80">
-          Scalable, sustainable packaging solutions for businesses looking to eliminate plastic from their supply chain.
-        </p>
+        <FadeIn3D yOffset={30}>
+          <h1 className="text-5xl md:text-6xl font-serif mb-6">B2B Wholesale Portal</h1>
+          <p className="text-xl max-w-2xl mx-auto text-white/80">
+            Scalable, sustainable packaging solutions for businesses looking to eliminate plastic from their supply chain.
+          </p>
+        </FadeIn3D>
       </div>
 
       <div className="container mx-auto px-4 py-20">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-20">
-          <div className="bg-white p-8 rounded-2xl shadow-soft">
-            <div className="w-14 h-14 bg-olive/10 rounded-full flex items-center justify-center mb-6">
-              <Box className="w-7 h-7 text-olive" />
-            </div>
-            <h3 className="text-2xl font-serif text-olive-dark mb-4">Volume Parsing & Tiers</h3>
-            <p className="text-charcoal-light">We support orders from small batches up to 100,000+ units. Benefit from significant economies of scale as your order size increases.</p>
-          </div>
-          <div className="bg-white p-8 rounded-2xl shadow-soft">
-            <div className="w-14 h-14 bg-terracotta/10 rounded-full flex items-center justify-center mb-6">
-              <Handshake className="w-7 h-7 text-terracotta" />
-            </div>
-            <h3 className="text-2xl font-serif text-olive-dark mb-4">Custom Branding</h3>
-            <p className="text-charcoal-light">Incorporate your brand identity directly into the material molds. No secondary adhesive labels required.</p>
-          </div>
-          <div className="bg-white p-8 rounded-2xl shadow-soft">
-            <div className="w-14 h-14 bg-green-100 rounded-full flex items-center justify-center mb-6">
-              <Sprout className="w-7 h-7 text-green-700" />
-            </div>
-            <h3 className="text-2xl font-serif text-olive-dark mb-4">Carbon Offset Regs</h3>
-            <p className="text-charcoal-light">OleaCycle containers strictly comply with EU packing carbon regulations, ensuring a seamless adoption for multinational brands.</p>
-          </div>
+          <FadeIn3D delay={0.1}>
+            <TiltCard zTranslate="30px" className="bg-white p-8 rounded-2xl shadow-soft h-full">
+              <Float4D yOffset={-8} className="w-14 h-14 bg-olive/10 rounded-full flex items-center justify-center mb-6">
+                <Box className="w-7 h-7 text-olive" />
+              </Float4D>
+              <h3 className="text-2xl font-serif text-olive-dark mb-4" style={{ transform: "translateZ(10px)" }}>Volume Parsing & Tiers</h3>
+              <p className="text-charcoal-light">We support orders from small batches up to 100,000+ units. Benefit from significant economies of scale as your order size increases.</p>
+            </TiltCard>
+          </FadeIn3D>
+          <FadeIn3D delay={0.3}>
+            <TiltCard zTranslate="30px" className="bg-white p-8 rounded-2xl shadow-soft h-full">
+              <Float4D yOffset={-8} delay={0.2} className="w-14 h-14 bg-terracotta/10 rounded-full flex items-center justify-center mb-6">
+                <Handshake className="w-7 h-7 text-terracotta" />
+              </Float4D>
+              <h3 className="text-2xl font-serif text-olive-dark mb-4" style={{ transform: "translateZ(10px)" }}>Custom Branding</h3>
+              <p className="text-charcoal-light">Incorporate your brand identity directly into the material molds. No secondary adhesive labels required.</p>
+            </TiltCard>
+          </FadeIn3D>
+          <FadeIn3D delay={0.5}>
+            <TiltCard zTranslate="30px" className="bg-white p-8 rounded-2xl shadow-soft h-full">
+              <Float4D yOffset={-8} delay={0.4} className="w-14 h-14 bg-green-100 rounded-full flex items-center justify-center mb-6">
+                <Sprout className="w-7 h-7 text-green-700" />
+              </Float4D>
+              <h3 className="text-2xl font-serif text-olive-dark mb-4" style={{ transform: "translateZ(10px)" }}>Carbon Offset Regs</h3>
+              <p className="text-charcoal-light">OleaCycle containers strictly comply with EU packing carbon regulations, ensuring a seamless adoption for multinational brands.</p>
+            </TiltCard>
+          </FadeIn3D>
         </div>
 
-        <div className="max-w-3xl mx-auto bg-white p-10 rounded-3xl shadow-xl border border-olive/10" id="quote-form">
-          <h2 className="text-3xl font-serif text-olive-dark mb-2 text-center">Request A Quote</h2>
-          <p className="text-center text-charcoal-light mb-8">Tell us about your volume and packaging needs.</p>
+        <FadeIn3D delay={0.2}>
+          <div className="max-w-3xl mx-auto bg-white p-10 rounded-3xl shadow-xl border border-olive/10" id="quote-form">
+            <h2 className="text-3xl font-serif text-olive-dark mb-2 text-center">Request A Quote</h2>
+            <p className="text-center text-charcoal-light mb-8">Tell us about your volume and packaging needs.</p>
           
           {isSuccess ? (
             <div className="bg-green-50 text-green-800 p-8 rounded-2xl text-center border border-green-200">
@@ -196,6 +208,7 @@ export const B2BPortalPage = () => {
             </form>
           )}
         </div>
+        </FadeIn3D>
       </div>
     </div>
   );
