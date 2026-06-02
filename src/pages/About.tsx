@@ -1,5 +1,4 @@
 import { motion } from 'framer-motion';
-import React from 'react';
 import { TiltCard } from '../components/animations/TiltCard';
 import { FadeIn3D } from '../components/animations/FadeIn3D';
 import { Float4D } from '../components/animations/Float4D';

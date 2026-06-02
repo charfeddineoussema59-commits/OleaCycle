@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ArrowRight, Box, Handshake, Sprout, Send, CheckCircle } from 'lucide-react';
+import { Box, Handshake, Sprout, Send, CheckCircle } from 'lucide-react';
 import { supabase } from '../lib/supabase';
 import emailjs from '@emailjs/browser';
 import { FadeIn3D } from '../components/animations/FadeIn3D';
